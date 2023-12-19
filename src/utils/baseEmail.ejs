@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap');
+
+        .details {
+            width: 70%;
+        }
+
+        @media (max-width: 700px) {
+            .details {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .details {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body
+    style="font-family: 'Cairo', sans-serif !important; line-height: 1.5; background-color: #e5e7eb; box-sizing: border-box; ">
+
+    <table lang="ar" dir="rtl"
+        style=" box-sizing: border-box; @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&display=swap');font-family: 'Cairo', sans-serif !important; width: 100%; border-collapse: collapse; max-width: 50rem; margin: auto; padding: 1rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); background-color: #c8d4ec; padding-bottom: 50px; ">
+        <tr>
+            <td>
+                <table lang="ar" dir="rtl"
+                    style=" border-collapse: collapse;  margin: auto; padding: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); background-color: #c8d4ec;">
+                    <tr>
+                        <td style="padding: 2rem; cursor: pointer;">
+                            <img alt="profile" src="https://offers.softifytechs.com/uploads/user/<%= company.image[0]%>"
+                                style="object-fit: cover; border-radius: 1rem; width: 5rem; height: 5rem; box-shadow: 0px 0px 20px -15px rgba(0, 0, 0, 1);">
+                        </td>
+                        <td style="font-weight: bold; font-size: 1.25rem; padding: 2rem;">
+                            <%= company.full_name %>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">تأكيد الطلب</h2>
+                <p style="margin-bottom: 1rem; font-size: 20px;">عزيزي <%= user.full_name %>,</p>
+                <p style="margin-bottom: 1rem;">شكرًا لطلبك. نحن سعداء لإعلامك بأن طلبك قد تم استلامه ويتم معالجته الآن.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="details" style="font-size: 1.25rem; font-weight: bold;margin:10px auto;  ">
+                    <h3
+                        style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;  margin-inline:auto; text-align: center;">
+                        تفاصيل الطلب
+                    </h3>
+                    <p style="margin-bottom: 0.5rem;">
+                        <span>
+                            <%= service.title %>
+                        </span>
+                        <span
+                            style="margin-right: 5px; background-color: #4c66af; color: white; border-radius: 0.25rem; padding: 2px;">
+                            <%= service.price %> جنيه
+                        </span>
+                    </p>
+                    <p style="font-size: 16px; font-weight: normal;">
+                        <%= service.description %>
+                    </p>
+                    <ul style="list-style-type: square; padding: 0 1rem;">
+                        <% for (let i=0; i < service.props.length; i++) { %>
+                            <li>
+                                <span>
+                                    <%= service.props[i] %>
+                                </span>
+                                <span
+                                    style="margin-right: 5px; background-color: #4CAF50; color: white; border-radius: 0.25rem; padding: 2px;">مجانا</span>
+                            </li>
+                            <% } %>
+                    </ul>
+                    <ul style="list-style-type: square; padding: 0 1rem; padding-bottom: 30px;">
+                        <% for (let i=0; i < extra_props.length; i++) { %>
+                            <li class="" style="padding: 20px;">
+                                <span>
+                                    <%= extra_props[i].description %>
+                                </span>
+                                <span
+                                    style="margin-right: 5px; background-color: #c07333; color: white; border-radius: 0.25rem; padding: 2px;">
+                                    <%= extra_props[i].price %> جنيه
+                                </span>
+                            </li>
+                            <% } %>
+                    </ul>
+                    <p style="text-align: center; margin-top: 20px; padding: 20px; border: #4c66af solid 2px;">
+                        <span>الإجمالي:</span>
+                        <span
+                            style="margin-right: 5px; background-color: #4caf50; color: white; border-radius: 0.25rem; padding: 2px;">
+                            <%= total_price %> جنيه
+                        </span>
+                    </p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <p>شكرًا!</p>
+                <p>أطيب التحيات,<br>
+                    <%= company.full_name %>
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+
+            <td style=" text-align:center; margin-bottom: 10px; ">
+                <a href="https://offers.softifytechs.com/home/" target="_blank"
+                    style="font-size:20px; font-weight: bold; color:rgba(6, 161, 245, 0.741); line-height:18px; margin:0 0 0; margin-bottom: 10px;">
+                    عروض اسعار</a>
+            </td>
+
+        </tr>
+        <tr>
+
+            <td style="text-align:center; padding-bottom: 50px;">
+                <a href="https://offers.softifytechs.com/home/" target="_blank"
+                    style="font-size:16px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">
+                    https://offers.softifytechs.com/home </a>
+            </td>
+
+        </tr>
+
+    </table>
+
+</body>
+
+</html>
