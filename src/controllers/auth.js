@@ -73,6 +73,8 @@ const loginUser = asyncHandler(async (req, res, next) => {
   const match = email ? { email: email.toLowerCase() } : { username };
 
   const user = await UserModel.findOne(match);
+  console.log(' user ====>', user);
+
   if (user.role === 'Admin' && user.password === password) {
     const token = jwt.sign(
       {
